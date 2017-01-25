@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="../css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/animate.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/index.css" type="text/css" rel="stylesheet" media="all"/>
+</head>
+<body class="blogArticle" >	
+	<header class="header">
+		<div class="container">
+			<div class="header-info navbar-left fadeInLeft animated" style="visiblity: visible; -webkit-animation-delay:.5s;">
+				<p><a href="/html/home.html">傲娇的黄同学的博客</a></p>
+			</div>
+			<form class="navbar-form navbar-right fadeInRight animated" style="visibility: visible; -webkit-animation-delay: .5s;">
+				<div id="userPosition"></div>
+			</form>
+		</div>
+	</header>
+	<div class="main">
+		<div class="container">
+			<div class="col-md-3">
+				<div class="leftBox">
+					<h4>个人资料</h4>
+					<div>
+						<img src="../images/touxiang.jpg" />
+						<p class="name">傲娇的黄同学</p>
+						<button type="submit" class="btn btn-envelope">
+							<span class="glyphicon glyphicon-envelope"></span>发私信
+						</button>
+					</div>					
+				</div>
+				<div class="leftBox">
+					<h4>文章搜索</h4>
+					<div>
+						<input type="text" class="form-control articleSearch" placeholder="Search">
+						<button type="submit" class="btn  btn-default btn-search articleSearchBtn">
+							<span class="glyphicon glyphicon-search "></span>
+						</button>		
+						<p><span>原创：</span>17篇</p>
+						<p><span>转载：</span>2篇</p>				
+					</div>
+				</div>
+				<div class="leftBox">
+					<h4>文章存档</h4> 
+					<div>
+						<a href="#"><p>2016年10月 （11）</p></a>
+						<a href="#"><p>2016年09月 （6）</p></a>
+						<a href="#"><p>2016年08月 （2）</p></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 rightBox" id="comment">
+				<div v-if="noArticle">
+					正在努力的获取文章中...
+				</div>
+				<div v-else>
+					<article-content v-bind:article="article"></article-content>
+					<commemt-content v-bind:comment="comment" v-on:change="changCommmer"></commemt-content>
+					<comment-textarea v-bind:type="type" v-bind:name="oldComment" v-on:submit="addComment" v-on:canel="canelCommit"></comment-textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/vue.min.js"></script>
+<script src="../js/article.js"></script>
+</html>

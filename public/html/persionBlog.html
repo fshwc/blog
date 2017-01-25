@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="../css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/animate.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/index.css" type="text/css" rel="stylesheet" media="all"/>
+</head>
+<body class="blogArticle" >	
+	<header class="header">
+		<div class="container">
+			<div class="header-info navbar-left fadeInLeft animated" style="visiblity: visible; -webkit-animation-delay:.5s;">
+				<p><a href="/html/home.html">傲娇的黄同学的博客</a></p>
+			</div>
+			<form class="navbar-form navbar-right fadeInRight animated" style="visibility: visible; -webkit-animation-delay: .5s;">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+					<button type="submit" class="btn btn-default btn-search" aria-label="left">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</header>
+	<div class="main">
+		<div class="container">
+			<div class="col-md-3">
+				<div class="leftBox">
+					<h4>个人资料</h4>
+					<div>
+						<img src="../images/touxiang.jpg" />
+						<p class="name">傲娇的黄同学</p>
+						<button type="submit" class="btn btn-envelope">
+							<span class="glyphicon glyphicon-envelope"></span>发私信
+						</button>
+					</div>					
+				</div>
+				<div class="leftBox">
+					<h4>文章搜索</h4>
+					<div>
+						<input type="text" class="form-control articleSearch" placeholder="Search">
+						<button type="submit" class="btn  btn-default btn-search articleSearchBtn">
+							<span class="glyphicon glyphicon-search "></span>
+						</button>		
+						<p><span>原创：</span>17篇</p>
+						<p><span>转载：</span>2篇</p>				
+					</div>
+				</div>
+				<div class="leftBox">
+					<h4>文章存档</h4> 
+					<div>
+						<a href="#"><p>2016年10月 （11）</p></a>
+						<a href="#"><p>2016年09月 （6）</p></a>
+						<a href="#"><p>2016年08月 （2）</p></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-9 rightBox" id="article">
+				<h3 class="title2">
+					<div class="titleBtn" >
+						<a class="glyphicon glyphicon-list" v-on:click="changeView" v-bind:data="'article-box'" v-bind:class="{'active' : currentView == 'article-box'}"></a>
+						<a class="glyphicon glyphicon-th" v-on:click="changeView"  v-bind:data="'article-list'" v-bind:class="{'active' : currentView == 'article-list'}"></a>
+
+					</div>
+					博客文章
+				</h3>
+				<div class="articleList" >
+					<component v-bind:is="currentView" v-for="item in itemBox" v-bind:item=item v-on:details="goto"></component>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/vue.min.js"></script>
+	<script src="../js/personalBlog.js"></script>
+</body>
+</html>

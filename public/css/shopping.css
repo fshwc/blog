@@ -1,0 +1,75 @@
+* {  
+    padding: 0px;  
+    margin: 0px;  
+    font-family: "微软雅黑";  
+}  
+  
+.goodsItem{  
+    width:230px;  
+    height: 360px;  
+    float: left;  
+    border: 1px solid #ccc;  
+    margin:10px 15px;  
+}  
+#goods{  
+    width:910px;  
+}  
+.goditem{  
+    list-style: none;  
+}  
+.godpic img{  
+    display: block;  
+    width:200px;  
+    height: 200px;  
+    margin:0px auto;  
+}  
+.godprice,.godinfo,.godadd{  
+    display: block;  
+    width:220px;  
+    margin:0px auto;  
+    text-align: center;  
+}  
+.godprice{  
+    font-size: 20px;  
+    color: #f00;  
+}  
+.godinfo{  
+    text-align: center;  
+    font-size: 14px;  
+    margin: 10px 0px;  
+  
+}  
+.godadd a{  
+    display: block;  
+    width: 150px;  
+    height: 36px;  
+    background-color: #fd6a01;  
+    border-radius: 10px;  
+    margin: 0px auto;  
+    text-decoration: none;  
+    color:#fff;  
+    line-height: 36px;  
+}  
+.godcar{  
+    position: fixed;  
+    right: 0px;  
+    top:40%;  
+    width: 45px;  
+    height: 60px;  
+    background:#fd6a01;
+}  
+.godcar .dnum{  
+    width:24px;  
+    height: 24px;  
+    border-radius: 12px;  
+    background-color: #f00;  
+    text-align: center;  
+    line-height: 24px;  
+    position: absolute;  
+    font-size: 12px;  
+    top:0px;  
+    background-color: yellow;  
+}  
+.godadd .bg {  
+}
+.dcar {font-size:30px; color:#fff; margin:15px 6px 0;}  

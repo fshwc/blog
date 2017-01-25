@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="../css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/animate.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/index.css" type="text/css" rel="stylesheet" media="all"/>
+</head>
+<body class="blogArticle" >	
+	<header class="header">
+		<p class="addArtHead">添加文章</p>
+		
+	</header>
+	
+	<div id="app">
+		<div class="addArtTitle">
+			<input type="text" placeholder="文章标题" v-model="title" id="artTitle"/>
+			<button @click="addArticle">发表博客</button>
+			<div class="original"><input type="checkbox" style="margin-right:10px;" v-model="original">原创请提勾</div>
+		</div>
+		<textarea v-model="text" class="addArticleText"></textarea>
+		<div v-html="mark" class="addArticleText" style="background:#EDEDED;"></div>
+		<div v-if="saveing| saveok |savefail" class="articlemask"></div>
+		<div v-if="saveing" class="saveing">正在保存，请稍后</div>
+		<div v-if="saveok" class="saveing" style="padding-top:10px;">
+			<p>保存成功</p>
+			<p>2秒后跳转到文章详情页</p>
+		</div>
+		<div v-if="savefail" class="saveing">保存失败</div>
+	</div>
+</body>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/vue.min.js"></script>
+<script src="../js/marked.min.js"></script>
+<script type="text/javascript">
+var app = new Vue({
+	el: "#app",
+	data: {
+		text: "",
+		title:"",
+		saveing: false,
+		saveok: false,
+		savefail: false,
+		original: false
+	},
+	computed: {
+		mark: function() {
+			return marked(this.text);
+		}
+	},
+	methods: {
+		addArticle: function() {
+			this.saveing = true;
+			var id = null;
+			if(getArticleId()) {
+				id = getArticleId();
+			}
+			$.ajax({
+				url: '/article/saveArticle',
+				type: 'post',
+				data: {
+					id: id,
+					title: this.title,
+					content: this.mark,
+					type : this.original,
+					author: "session"
+				},
+				success: function(data) {
+					if(data.status == 99999) {
+						console.log(id);
+						app.saveing = false;
+						app.saveok = true;
+						setTimeout(function() {
+							location.href='http://'+window.location.host+'/article?id='+(id || data.insertId);
+						},2000)
+					}else {
+						app.saveing = false;
+						app.savefail = true;
+					}
+				}
+			})
+		}
+	}
+})
+
+function getArticleId (){
+	var params = window.location.search.substring(1).split('&');
+	var size = params.length;
+	var param = null;
+	for(var i = 0; i < size; i++){
+		param = params[i].split('=');
+		if(param[0] == "id"){
+			return param[1];
+		}
+	}		
+}
+
+$(document).ready(function() {
+	$.ajax({
+		url: '/article/getArticleId',
+		data: {
+			id: getArticleId()
+		},
+		type: 'get',
+		success: function(data) {
+			var article = data.article[0]
+			app.title = article.title;
+			app.text = article.content;
+		}
+	})
+})
+</script>
+</html>

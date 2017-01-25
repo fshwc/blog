@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="app">
+<child></child>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.1.8/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+<script>
+var child = {
+  template: '<div><select v-model="shopType"><option  v-bind:value=1>总店</option><option  v-bind:value=0>分店</option></select><button @click="show">123</button></div>',
+  data: function() {
+    return {shopType: 0}
+  },
+  methods: {
+    show: function() {
+      alert(this.shopType);
+    }
+  }
+}
+var app = new Vue({
+  el: '#app',
+  data: {
+    stores: []
+  },
+  created: function(){
+    this.$http.get('/shop').then(function(data) {
+      console.log(data.data.data[0].address)
+    })
+  },
+  components: {'child':child}
+})
+
+</script>
+</html>

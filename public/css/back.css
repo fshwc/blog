@@ -1,0 +1,38 @@
+body,html, div, p, li, ul, button, input, h1, h4 {margin:0; padding:0;}
+body,html {font-family: "微软雅黑";}
+.clearFix {clear:both; display:table; content:"";}
+/*header*/
+.header {padding:0.8em 0; background-color:#01553D; width:100%; position: absolute; z-index:100;}
+.header-info p {font-size:2em; color:#fff; margin-top:0.2em; margin-left:-1.5em;}
+.header a {font-size:1.2em; color:#fff; text-decoration: none; cursor:pointer;}
+.header a:hover {background:none !important; color:yellow;}
+
+
+
+.mainBox {width:100%; height:100%; position:absolute; overflow: hidden;}
+.leftList {background:#000; float:left; width:20%; height:100%; margin-top:70px;}
+.manageList li{display:block; width:100%; height:3em; line-height:3em; font-size:1.5em; list-style:none; padding-left:2em;}
+.manageList li a {color:#fff; text-decoration: none;}
+
+
+
+
+
+
+
+.rightList {float:left; width:80%; margin-top:70px;}
+
+
+
+
+/*css动画*/
+.flip-list-move {
+  transition: transform 1s;
+}
+
+
+
+
+
+
+

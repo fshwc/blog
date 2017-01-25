@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="../css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+	<link href="../css/home.css" type="text/css" rel="stylesheet" media="all"/>
+	<link href="../css/shopping.css" type="text/css" rel="stylesheet" media="all" />
+</head>
+<body>
+	<div id="home">
+		<div class="leftBar">
+			<p><a href="/html/home.html">简</a></p>
+			<span class="glyphicon glyphicon-music"></span>
+			<span class="glyphicon glyphicon-star"></span>
+			<a href="/html/shopping.html"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+		</div>
+		<div class="leftImg">
+			<img src="../images/home.jpg" />
+			<div class="text">
+				<h1>简书</h1>
+				<p>交流故事，沟通想法</p>
+			</div>
+		</div>
+		<div class="rightBox">
+			<div class="header">
+				<div class="header-info navbar-left">
+					<a href="javascript:;" class="actived">发现</a>
+					<a href="javascript:;">2016精选</a>
+				</div>
+				<form class="navbar-form navbar-right">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+						<button type="submit" class="btn btn-default btn-search" aria-label="left">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</form>
+				<div id="userPosition"></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="tagGroup">
+				<a href="javascript:;" class="actived">热门</a><a href="javascript:;">小说精选</a><a href="javascript:;">新上榜</a>
+				<a href="javascript:;">漫画手绘</a><a href="javascript:;">有奖活动</a><a href="javascript:;">日报</a>
+				<a href="javascript:;">活动</a><a href="javascript:;">简书博客</a><a href="javascript:;">日报</a>
+				<a href="javascript:;">活动</a><a href="javascript:;">简书博客</a><a href="javascript:;">日报</a>
+				<a href="javascript:;">热门</a><a href="javascript:;">小说精选</a><a href="javascript:;">新上榜</a>
+				<a href="javascript:;">漫画手绘</a><a href="javascript:;">有奖活动</a><a href="javascript:;">日报</a>
+			</div>
+			<div class="clearfix"></div>
+
+			<div id="goods">  
+				<div >
+		        	<goods-list v-for="(goods,index) in good" v-bind:goods="goods" v-on:change="addGood" v-bind:key="index"></goods-list>
+		        </div>
+		        <div class="godcar">  
+			        <div class="dnum">{{num}}</div>  
+			        <div class="dcar">  
+			            <a href="/good/personalCart"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+			        </div>  
+			    </div>
+		    </div>  
+		</div>
+  
+    
+<script src="../js/jquery.min.js"></script>
+<script src="../js/vue.min.js"></script>  
+<script src="../js/shopping.js"></script>
+</body>
+</html>

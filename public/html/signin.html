@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="../css/bootstrap.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<a href="/html/home.html" style="font-size:30px; margin-left:200px;">首页</a>
+		<div class="" id="signupModal">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form id="formid" name="user">
+						<div class="modal-header">登录</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="signupName">用户名</label>
+								<input id="signupName" class="form-control" name="user[name]" type="text">
+							</div>
+							<div class="form-group">
+								<label for="signupPassword">密码</label>
+								<input id="signupPassword" class="form-control" name="user[password]" type="text">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+							<button class="btn btn-success" type="button" id="signup">提交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="" id="registerModal" >
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<form id="formRegister" name="user">
+						<div class="modal-header">注册</div>
+						<div class="modal-body">
+							<div class="form-group">
+								<label for="signupName">用户名</label>
+								<input id="signupName" class="form-control" name="user[name]" type="text">
+							</div>
+							<div class="form-group">
+								<label for="signupPassword">密码</label>
+								<input id="signupPassword" class="form-control" name="user[password]" type="text">
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-default" type="button" data-dismiss="modal">关闭</button>
+							<button class="btn btn-success" type="button" id="register">提交</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript">
+
+	$("#signup").click(function(){
+		$.ajax({
+			url: "/user/signup",
+			type: 'post',
+			data: $("#formid").serialize(),
+			success: function(data) {
+				if(data.status == 99999) {
+					alert("1秒后跳转到首页");
+					setTimeout(function() {
+						location.href='http://'+window.location.host+'/html/home.html';
+					},1000)
+				}else {
+					alert('登录名或密码错误')
+				}
+			}
+		})		
+	})
+		
+
+	$("#register").click(function(){
+		$.ajax({
+			url: "/user/register",
+			type: 'post',
+			data: $("#formRegister").serialize(),
+			success: function(data) {
+				console.log(data);
+				if(data.status == 99999) {
+					alert("注册成功")
+				}else {
+					alert("登录名已经有人用")
+				}
+			}
+		})		
+	})
+
+	</script>
+</body>
+</html>
